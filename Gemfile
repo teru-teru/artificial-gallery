@@ -57,3 +57,7 @@ gem 'kaminari'
 #画像アップロード
 gem 'carrierwave'
 
+#Heroku用
+group :production do
+  gem 'pg', '0.21.0'
+end
