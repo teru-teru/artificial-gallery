@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: artificial-gallery_production
   username: artificial-gallery
   password: <%= ENV['ARTIFICIAL-GALLERY_DATABASE_PASSWORD'] %>
