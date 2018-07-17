@@ -11,14 +11,6 @@
 </div>
 
 <div>
-  <%= "@json = #{@json} " %>
-</div>
-
-<div>
-  <%= "@image_url= #{@image_url}" %>
-</div>
-
-<div>
   <% unless @json["description"]["tags"].nil? %>
   <h2>タグ</h2>
   <ul>
@@ -32,3 +24,13 @@
 <div>
   <%= link_to "解析ページへ戻る", root_path %>
 </div>
+
+<!--以下テスト表示用-->
+
+<div>
+  <%= "@json = #{@json} " %>
+</div>
+<div>
+  <%= "@image_url= #{@image_url}" %>
+</div>
+
