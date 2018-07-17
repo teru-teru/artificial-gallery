@@ -1,0 +1,34 @@
+<div>
+  <% unless @json["description"]["captions"][0].nil? %>
+    <h1>説明：<%= @json["description"]["captions"][0]["text"] %></h1>
+  <% else %>
+    <h1>タイトルなし</h1>
+  <% end %>
+</div>
+
+<div>
+  <%= image_tag @image.image.url if @image.image? %>
+</div>
+
+<div>
+  <%= "@json = #{@json} " %>
+</div>
+
+<div>
+  <%= "@image_url= #{@image_url}" %>
+</div>
+
+<div>
+  <% unless @json["description"]["tags"].nil? %>
+  <h2>タグ</h2>
+  <ul>
+    <% @json["description"]["tags"].each do |tag| %>
+      <li><%= tag %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "解析ページへ戻る", root_path %>
+</div>
