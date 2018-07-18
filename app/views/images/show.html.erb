@@ -1,9 +1,13 @@
 <div>
- <h1><%= @image.caption.text %> <span class="badge"><%= @image.caption.confidence.to_s + "%" %></span></h1>
+ <h1><%= @image.caption.text %> ＝＞自信：<span class="badge"><%= @image.caption.confidence.to_s + "%" %></span></h1>
 </div>
 
 <div>
   <%= image_tag @image.image.url if @image.image? %>
+</div>
+
+<div>
+  <%= link_to "画像を削除", @image, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger btn-xs" %>
 </div>
 
 <div>

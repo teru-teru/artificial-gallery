@@ -56,6 +56,8 @@ gem 'kaminari'
 
 #画像アップロード
 gem 'carrierwave'
+#画像リサイズ用
+gem 'rmagick'
 
 #Heroku用
 group :production do

@@ -2,8 +2,9 @@ require "net/http"
 require "json"
 
 class ImagesController < ApplicationController
+  
   def show
-    @image = Image.find(params[:id])
+     @image = Image.find(params[:id])
   end
 
   def new
@@ -66,6 +67,10 @@ class ImagesController < ApplicationController
   end
 
   def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+    flash[:success] = "画像を削除しました。"
+    redirect_to root_url
   end
   
   private
