@@ -1,0 +1,11 @@
+<h1>#<%= @tag.word %></h1>
+
+<% @images = @tag.images.page(params[:page]).per(4) %>
+
+<% @images.each do |i| %>
+  <%= image_tag i.image.url if i.image? %>
+<% end %>
+
+<%= paginate @images %>
+<%= link_to "戻る", :back %>
+<%= link_to "トップページ", root_path %>

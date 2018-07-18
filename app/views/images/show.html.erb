@@ -1,9 +1,5 @@
 <div>
-  <% unless @json["description"]["captions"][0].nil? %>
-    <h1>説明：<%= @json["description"]["captions"][0]["text"] %></h1>
-  <% else %>
-    <h1>タイトルなし</h1>
-  <% end %>
+ <h1><%= @image.caption.text %> <span class="badge"><%= @image.caption.confidence.to_s + "%" %></span></h1>
 </div>
 
 <div>
@@ -11,26 +7,17 @@
 </div>
 
 <div>
-  <% unless @json["description"]["tags"].nil? %>
   <h2>タグ</h2>
   <ul>
-    <% @json["description"]["tags"].each do |tag| %>
-      <li><%= tag %></li>
+    <% @image.tags.each do |tag| %>
+      <li><%= link_to tag do %> 
+      <%= "#" + tag.word %>
+      <% end %>
+      </li>
     <% end %>
   </ul>
-  <% end %>
 </div>
 
 <div>
   <%= link_to "解析ページへ戻る", root_path %>
 </div>
-
-<!--以下テスト表示用-->
-
-<div>
-  <%= "@json = #{@json} " %>
-</div>
-<div>
-  <%= "@image_url= #{@image_url}" %>
-</div>
-

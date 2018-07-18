@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716130244) do
+ActiveRecord::Schema.define(version: 20180718124834) do
+
+  create_table "captions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "text"
+    t.integer  "confidence"
+    t.integer  "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_captions_on_image_id", using: :btree
+  end
+
+  create_table "descriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "image_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id", "tag_id"], name: "index_descriptions_on_image_id_and_tag_id", unique: true, using: :btree
+    t.index ["image_id"], name: "index_descriptions_on_image_id", using: :btree
+    t.index ["tag_id"], name: "index_descriptions_on_tag_id", using: :btree
+  end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image"
@@ -18,4 +37,13 @@ ActiveRecord::Schema.define(version: 20180716130244) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "captions", "images"
+  add_foreign_key "descriptions", "images"
+  add_foreign_key "descriptions", "tags"
 end

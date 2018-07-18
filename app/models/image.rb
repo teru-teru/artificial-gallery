@@ -1,6 +1,18 @@
-
 class Image < ApplicationRecord
   mount_uploader :image, ImageUploader
+  
+  has_many :descriptions, dependent: :destroy
+  has_many :tags, through: :descriptions
+  has_one :caption, dependent: :destroy, class_name: Caption
+  
+  def describe(tag)
+    self.descriptions.find_or_create_by(tag_id: tag.id)
+  end
+  
+  def describe?(tag)
+    self.descripntions.include?(tag)
+  end
+  
   
   # ↓request が　undifinedとなりうまくいかない
   # def dcomputer_vision(_API)
