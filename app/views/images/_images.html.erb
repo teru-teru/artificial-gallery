@@ -1,0 +1,24 @@
+<% if tags %>
+  <div class="row">
+    <% images.each do |i| %>
+      <div class="image">
+        <div class="col-md-6 col-sm-6 col-cs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <% @images = tags.images.page(params[:page]).per(4) %>
+              <% @images.each do |i| %>
+                <li>
+                  <%= link_to i do %> 
+                  <%= image_tag i.image.url if i.image? %>
+                  <% end %>
+                </li>
+              <% end %>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

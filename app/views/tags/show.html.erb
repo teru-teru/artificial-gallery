@@ -10,7 +10,9 @@
   </div>
   <% @ranking_tags.each do |tag| %>
     <%= link_to tag do %>
-      <span>#<%= tag.word %>(<%= @ranking_counts[tag.id] %>)</span>
+    <button type="button" class="btn btn-default">
+      #<%= tag.word %>(<%= @ranking_counts[tag.id] %>)
+    </button>
     <% end %>
   <% end %>  
 </div>

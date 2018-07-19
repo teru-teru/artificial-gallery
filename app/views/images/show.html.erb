@@ -1,5 +1,5 @@
 <div>
- <h1><%= @image.caption.text %> ＝＞自信：<span class="badge"><%= @image.caption.confidence.to_s + "%" %></span></h1>
+ <h1><%= @image.caption.text %> <span class="badge">自信：<%= @image.caption.confidence.to_s + "%" %></span></h1>
 </div>
 
 <div>
@@ -14,10 +14,11 @@
   <h2>タグ</h2>
   <ul>
     <% @image.tags.each do |tag| %>
-      <li><%= link_to tag do %> 
+      <%= link_to tag do %> 
+      <button type="button" class="btn btn-default">
       <%= "#" + tag.word %>
+      </button>
       <% end %>
-      </li>
     <% end %>
   </ul>
 </div>
