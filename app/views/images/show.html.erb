@@ -7,7 +7,7 @@
 </div>
 
 <div>
-  <%= link_to "画像を削除", @image, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger btn-xs" %>
+  <%= link_to "画像を削除", @image, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-xs" %>
 </div>
 
 <div>
@@ -21,6 +21,8 @@
     <% end %>
   </ul>
 </div>
+<p>解析結果をTwitterでシェアしよう！</p>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="AIで画像分析してみたよ！　" data-hashtags="artificialgallery" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <div>
   <%= link_to "解析ページへ戻る", root_path %>

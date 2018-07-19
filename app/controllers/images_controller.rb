@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
     
     if @image.save
+      flash[:success] = "画像を投稿しました"
       
       # リクエスト用画像URL
       @image_url = request.url.gsub("#{request.fullpath}", "") + @image.image.url
@@ -28,7 +29,7 @@ class ImagesController < ApplicationController
       http = Net::HTTP::Post.new(uri.request_uri)
       http['Content-Type'] = 'application/json'
       http['Ocp-Apim-Subscription-Key'] = '5712dc41a39645cbad4bef6df0b69585' #テスト用key→本番用は外だしで管理
-      http.body = { url: @image_url }.to_json 
+      http.body = { url: "http://www.lord-to.co.jp/lineup17/1602.jpg" }.to_json 
 
       #解析する画像URL @image_url→cloud9だとエラー,herokuでOK確認済み
       #"http://cp.glico.jp/powerpro/wp-content/uploads/entry93-630x430.jpg" #←水泳画像URL：説明タグともにありの例
@@ -62,6 +63,7 @@ class ImagesController < ApplicationController
       
       redirect_to @image
     else
+      flash.now[:danger] = "画像の投稿に失敗しました"
       render :new
     end
   end
