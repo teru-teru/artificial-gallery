@@ -63,3 +63,9 @@ gem 'rmagick'
 group :production do
   gem 'pg', '0.21.0'
 end
+#デバック用
+gem 'pry-byebug'
+#AWS S3用に追加
+gem 'fog-aws'
+#環境変数用
+gem 'dotenv-rails'

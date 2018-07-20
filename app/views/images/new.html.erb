@@ -1,7 +1,7 @@
 <h1>新規投稿</h1>
 <%= form_for(@image) do |f| %>
   <%= f.file_field :image %>
-  <div>
-  <%= f.submit "解析" %>
+  <div><br>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
   </div>
 <% end %>
