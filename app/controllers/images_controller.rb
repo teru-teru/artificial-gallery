@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
       uri = URI('https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze')
       uri.query = URI.encode_www_form({
         'visualFeatures' => 'Description',
-        'language' => 'ja'
+        'language' => 'en'
       })
 
       http = Net::HTTP::Post.new(uri.request_uri)
