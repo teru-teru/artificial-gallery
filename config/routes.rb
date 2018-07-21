@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "images#new"
+  root to: "toppages#index"
   
   get "confidence_ranking", to: "images#confidence"
   resources :tags, only: [:show, :index]

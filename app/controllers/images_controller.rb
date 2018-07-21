@@ -4,7 +4,10 @@ class ImagesController < ApplicationController
   
   def show
      @image = Image.find_by(id: params[:id])
-     redirect_to root_url if @image.nil?
+     if @image.nil?
+      flash[:warning]= "画像ページがありません"
+      redirect_to root_url 
+    end
   end
 
   def new

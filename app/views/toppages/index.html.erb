@@ -1,0 +1,13 @@
+<% content_for :cover do %>
+  <div class="cover text-center">
+    <h1><span class="red">A</span>RT<span class="red">I</span>FICIAL</h1>
+    <h1>GALLERY</h1>
+  </div>
+<% end %>
+
+<h2 class="text-center">
+  最近の投稿
+</h2>
+  
+<%= render "images/images", images: @image.page(params[:page]).per(4) %>
+
