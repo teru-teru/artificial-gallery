@@ -10,6 +10,11 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
   end
+  
+  def confidence
+    ranking_image_id = Caption.ranking_for_confidence.pluck(:image_id)
+    @image_ranking = Image.find(ranking_image_id)
+  end
 
   def create
     if params[:image].nil?

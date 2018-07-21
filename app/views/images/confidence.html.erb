@@ -1,0 +1,5 @@
+<div class="text-center">
+  <h2>解析自信度ランキング</h2>
+</div>
+
+<%= render "images/images", images: Kaminari.paginate_array(@image_ranking).page(params[:page]).per(4)  %>

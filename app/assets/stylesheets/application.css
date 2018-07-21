@@ -14,7 +14,7 @@
   margin: 20px;
 }
 
-.btn-twitter{
+.twitter-share-button{
   background-color: #55acee;
   color: white;
 }
@@ -24,9 +24,8 @@
   margin:10px;
 }
 
-.twitter-share p {
+p {
   font-size: 18px;
-  display:inline-block;
 }
 
 img {
