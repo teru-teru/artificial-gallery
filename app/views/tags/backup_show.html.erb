@@ -1,0 +1,36 @@
+<h1>#<%= @tag.word %></h1>
+<h1><%= @tag.images.count %>件の画像</h1>
+
+<% @ranking_counts = Description.ranking %>
+<% @ranking_tags = Tag.find(@ranking_counts.keys) %>
+
+<div>
+  <div>
+    <h3>よくつけられているタグ</h3>
+  </div>
+  <% @ranking_tags.each do |tag| %>
+    <%= link_to tag do %>
+    <button type="button" class="btn btn-default btn-xsbtn-tag">
+      #<%= tag.word %>(<%= @ranking_counts[tag.id] %>)
+    </button>
+    <% end %>
+  <% end %>  
+</div>
+
+
+<% @images = @tag.images.page(params[:page]).per(4) %>
+<% @images.each do |i| %>
+  <li><%= link_to i do %> 
+  <%= image_tag i.image.url if i.image? %>
+  <% end %>
+  </li>
+
+<% end %>
+
+<%= paginate @images %>
+<div>
+<%= link_to "戻る", :back %>
+</div>
+<div>
+<%= link_to "トップページ", root_path %>
+</div>

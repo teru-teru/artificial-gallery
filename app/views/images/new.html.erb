@@ -1,7 +1,25 @@
-<h1>新規投稿</h1>
-<%= form_for(@image) do |f| %>
-  <%= f.file_field :image %>
-  <div><br>
-  <%= f.submit "投稿", class: "btn btn-primary" %>
-  </div>
-<% end %>
+<div class="text-center">
+  <h class="new-image-title">新規投稿</h>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+      <div class="precaution">
+        <p>＜＜注意事項＞＞</p>
+        <ul>
+          <li>個人情報を含む画像は投稿しないでください</li>
+          <li>投稿可能な形式はJPEG, PNG, GIF, BMPです</li>
+          <li>公序良俗に反する投稿は禁止です</li>
+          <li>画像によってはうまく解析できないことがあります</li>
+        </ul>
+      </div>
+    
+    <%= form_for(@image) do |f| %>
+      <%= f.file_field :image %>
+      
+      <div class="text-center post-button">
+      <%= f.submit "　　　投稿　　　", class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>  
+</div>
