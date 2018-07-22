@@ -1,5 +1,9 @@
 require "net/http"
 require "json"
+#環境変数読み込み
+Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
+
 class ImagesController < ApplicationController
 
   before_action :require_user_logged_in, only: [:create, :destroy]
@@ -40,7 +44,7 @@ class ImagesController < ApplicationController
       # リクエスト用画像URL
       @image_url = @image.image.url
       # リクエストの生成
-      uri = URI('https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze')
+      uri = URI('https://japaneast.api.cognitive.microsoft.com/vision/v1.0/analyze')
       uri.query = URI.encode_www_form({
         'visualFeatures' => 'Description', #取得データを選択
         'language' => "en", #言語を選択,
@@ -48,7 +52,7 @@ class ImagesController < ApplicationController
 
       http = Net::HTTP::Post.new(uri.request_uri)
       http['Content-Type'] = 'application/json'
-      http['Ocp-Apim-Subscription-Key'] = '5712dc41a39645cbad4bef6df0b69585' #テスト用key→本番用は外だしで管理
+      http['Ocp-Apim-Subscription-Key'] = ENV["MS_CV_SUBSCRIPTION_KEY"]
       http.body = { url: @image_url }.to_json 
 
       response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |client|
@@ -57,7 +61,7 @@ class ImagesController < ApplicationController
 
       # レスポンスの加工
       @json = JSON.parse(response.body)
-
+binding.pry
       #タグの保存、紐づけ
       tags = @json["description"]["tags"]
       tags.each do |tag|
