@@ -22,6 +22,11 @@
               <% end %>
             <% end %>
            </ul>
+          <% if i.user != nil && i.user == current_user %> <!--本番環境では i.user != nil不要-->
+            <div class="text-center">
+              <%= link_to "画像を削除", i, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+            </div>
+          <% end %>
           </div>
         </div>
       </div>

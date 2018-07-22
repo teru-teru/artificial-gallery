@@ -1,6 +1,8 @@
 require "net/http"
 require "json"
 class ImagesController < ApplicationController
+
+  before_action :require_user_logged_in, only: [:create, :destroy]
   
   def show
      @image = Image.find_by(id: params[:id])
@@ -30,7 +32,7 @@ class ImagesController < ApplicationController
       redirect_to new_image_url and return
     end
 
-    @image = Image.new(image_params)
+    @image = current_user.images.build(image_params)
 
     if @image.save
       flash[:success] = "画像を投稿しました"

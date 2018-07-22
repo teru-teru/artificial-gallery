@@ -1,6 +1,8 @@
 class Image < ApplicationRecord
   mount_uploader :image, ImageUploader
   
+  belongs_to :user
+  
   has_many :descriptions, dependent: :destroy
   has_many :tags, through: :descriptions
   has_one :caption, dependent: :destroy, class_name: Caption
