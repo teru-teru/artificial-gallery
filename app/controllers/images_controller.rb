@@ -15,8 +15,13 @@ class ImagesController < ApplicationController
   end
   
   def confidence
-    ranking_image_id = Caption.ranking_for_confidence.pluck(:image_id)
+    ranking_image_id = Caption.order("confidence DESC").pluck(:image_id)
     @image_ranking = Image.find(ranking_image_id)
+  end
+  
+  def analysis_false
+    false_image_id = Caption.where(confidence: 0).pluck(:image_id)
+    @image_false = Image.find(false_image_id)
   end
 
   def create
@@ -36,7 +41,7 @@ class ImagesController < ApplicationController
       uri = URI('https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze')
       uri.query = URI.encode_www_form({
         'visualFeatures' => 'Description', #取得データを選択
-        'language' => "ja", #言語を選択,
+        'language' => "en", #言語を選択,
       })
 
       http = Net::HTTP::Post.new(uri.request_uri)

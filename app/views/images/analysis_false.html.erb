@@ -1,0 +1,5 @@
+<div class="text-center">
+  <h2>解析失敗画像</h2>
+</div>
+
+<%= render "images/images", images: Kaminari.paginate_array(@image_false).page(params[:page]).per(4)  %>
