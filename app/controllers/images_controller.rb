@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
       uri = URI('https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze')
       uri.query = URI.encode_www_form({
         'visualFeatures' => 'Description', #取得データを選択
-        'language' => 'en' #言語を選択
+        'language' => "ja", #言語を選択,
       })
 
       http = Net::HTTP::Post.new(uri.request_uri)
@@ -65,11 +65,12 @@ class ImagesController < ApplicationController
         @caption.text = @json["description"]["captions"][0]["text"]
         @caption.confidence = @json["description"]["captions"][0]["confidence"]*100.round
       else 
-        @caption.text = "??(o_o)??"
+        @caption.text = "??????????"
         @caption.confidence = 0
       end
       @caption.save
-      
+      #テスト用
+      @@json = @json
       redirect_to @image
     else
       flash.now[:danger] = "画像の投稿に失敗しました"
@@ -89,6 +90,5 @@ class ImagesController < ApplicationController
   def image_params
     params.require(:image).permit(:image)
   end
-  
   
 end

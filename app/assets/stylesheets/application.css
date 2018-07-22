@@ -1,9 +1,9 @@
 @charset "utf-8";
 
 .cover{
-  background-color: #dddddd;
+  background-color: #cccccc;
   color: white;
-  padding: 80px 0 80px 0;
+  padding: 30px 0 30px 0;
 }
 
 .cover h1{
@@ -31,11 +31,6 @@
 
 .post-button{
   margin: 20px;
-}
-
-.twitter-share-button{
-  background-color: #55acee;
-  color: white;
 }
 
 .twitter-share{
@@ -71,7 +66,7 @@ img {
   z-index:10;
 }
 
-.top-space{
+.space{
   height:30px;
 }
 
