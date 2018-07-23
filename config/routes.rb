@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "signup", to: "users#new"
   get "confidence_ranking", to: "images#confidence"
   get "analysis_false", to: "images#analysis_false"
+  get "images/:id/relevance", to: "images#relevance"
 
   resources :users, only: [:show, :new, :create]
   resources :tags, only: [:show, :index]

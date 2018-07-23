@@ -13,21 +13,11 @@ class ImagesController < ApplicationController
      if @image.nil?
       flash[:warning]= "画像ページがありません"
       redirect_to root_url 
-    end
+     end
   end
 
   def new
     @image = Image.new
-  end
-  
-  def confidence
-    ranking_image_id = Caption.order("confidence DESC").pluck(:image_id)
-    @image_ranking = Image.find(ranking_image_id)
-  end
-  
-  def analysis_false
-    false_image_id = Caption.where(confidence: 0).pluck(:image_id)
-    @image_false = Image.find(false_image_id)
   end
 
   def create
@@ -61,7 +51,6 @@ class ImagesController < ApplicationController
 
       # レスポンスの加工
       @json = JSON.parse(response.body)
-binding.pry
       #タグの保存、紐づけ
       tags = @json["description"]["tags"]
       tags.each do |tag|
@@ -94,6 +83,20 @@ binding.pry
     @image.destroy
     flash[:success] = "画像を削除しました。"
     redirect_to root_url
+  end
+  
+  def confidence
+    ranking_image_id = Caption.order("confidence DESC").pluck(:image_id)
+    @image_ranking = Image.find(ranking_image_id)
+  end
+  
+  def analysis_false
+    false_image_id = Caption.where(confidence: 0).pluck(:image_id)
+    @image_false = Image.find(false_image_id)
+  end
+
+  def relevance
+    @image = Image.find(params[:id])
   end
   
   private

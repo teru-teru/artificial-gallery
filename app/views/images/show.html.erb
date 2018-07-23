@@ -24,7 +24,10 @@
       </div>
     </div>
     <div class="text-center">
-      <p>↑↑#タグをクリックして同じタグが付いた写真を検索</p>
+      <p>↑↑#タグをクリックして同じタグが付いた写真を検索</p><br>
+      <%= link_to ({:controller => "images", :action => "relevance"}) do  %>
+      <p class="btn btn-info btn-block">同じタグが多くついた画像を検索する</p>
+      <% end %>
       <div class="space"></div>
       <div class="panel panel-default panel-body">
         <p>解析結果をSNSでシェアしよう！</p>
@@ -37,6 +40,5 @@
         <div class="space"></div>
       <% end %>
     </div>
-
   </div>
 </div>

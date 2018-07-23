@@ -1,0 +1,7 @@
+<div class="text-center">
+  <h2>同じタグが多く付いている画像</h2>
+</div>
+
+<% @same_tag_images = Image.find(@image.same_tag_images.keys) %>
+
+<%= render "images/images", images: Kaminari.paginate_array(@same_tag_images).page(params[:page]).per(4)  %>
