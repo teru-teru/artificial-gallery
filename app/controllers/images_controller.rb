@@ -27,9 +27,8 @@ class ImagesController < ApplicationController
     end
 
     @image = current_user.images.build(image_params)
-
+ @image_url = @image.image.url
     if @image.save
-      flash[:success] = "画像を投稿しました"
       
       # リクエスト用画像URL
       @image_url = @image.image.url
@@ -51,6 +50,15 @@ class ImagesController < ApplicationController
 
       # レスポンスの加工
       @json = JSON.parse(response.body)
+
+      if response.code != "200"
+        flash[:danger] = "エラーが発生しました(#{@json["message"]})"
+        @image.destroy
+        redirect_to new_image_url and return
+      end
+
+      flash[:success] = "画像を投稿しました"
+
       #タグの保存、紐づけ
       tags = @json["description"]["tags"]
       tags.each do |tag|
