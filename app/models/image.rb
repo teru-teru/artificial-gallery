@@ -8,6 +8,7 @@ class Image < ApplicationRecord
   has_one :caption, dependent: :destroy, class_name: Caption
   
   validates :image, presence: true
+  validates :language, presence: true
   
   def describe(tag)
     self.descriptions.find_or_create_by(tag_id: tag.id)

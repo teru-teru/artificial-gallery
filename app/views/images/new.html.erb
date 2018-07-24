@@ -11,15 +11,21 @@
           <li>投稿可能な形式はJPEG, PNG, GIF, BMPです</li>
           <li>公序良俗に反する投稿は禁止です</li>
           <li>画像によってはうまく解析できないことがあります</li>
-          <li>残念ながら特に絵の解析には弱いです</li>
+          <li>残念ながら、絵の解析には弱いです</li>
+          <li>日本語より英語のほうが解析精度が高いです</li>
         </ul>
       </div>
     
     <%= form_for(@image) do |f| %>
       <%= f.file_field :image %>
-      
+
+        <br>
+        <div class="form-group">
+      <%= f.label :language, '解析する言語を選択' %>
+      <%= f.select :language, [["英語", "en"], ["日本語", "ja"]] , {},  {class: "form-control"} %>
+        </div>
       <div class="text-center post-button">
-        <%= f.submit "　　　投稿　　　", class: "btn btn-primary btn-lg" %>
+        <%= f.submit "投稿", class: "btn btn-primary btn-lg" %>
       </div>
     <% end %>
   </div>  

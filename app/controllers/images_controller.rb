@@ -25,9 +25,8 @@ class ImagesController < ApplicationController
       flash[:danger] = "画像を選択してください"
       redirect_to new_image_url and return
     end
-
     @image = current_user.images.build(image_params)
- @image_url = @image.image.url
+    @image_url = @image.image.url
     if @image.save
       
       # リクエスト用画像URL
@@ -36,7 +35,7 @@ class ImagesController < ApplicationController
       uri = URI('https://japaneast.api.cognitive.microsoft.com/vision/v1.0/analyze')
       uri.query = URI.encode_www_form({
         'visualFeatures' => 'Description', #取得データを選択
-        'language' => "en", #言語を選択,
+        'language' => "#{@image.language}", #言語を選択,
       })
 
       http = Net::HTTP::Post.new(uri.request_uri)
@@ -110,7 +109,7 @@ class ImagesController < ApplicationController
   private
   
   def image_params
-    params.require(:image).permit(:image)
+    params.require(:image).permit(:image, :language)
   end
   
 end
