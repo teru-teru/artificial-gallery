@@ -1,7 +1,6 @@
 <div class="text-center">
   <h1>ユーザ登録</h1>
 </div>
-
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
     
@@ -29,8 +28,22 @@
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
       
-      <%= f.submit "登録", class: "btn btn-primary brn-block" %>
+      <%= f.submit "登録", class: "btn btn-primary btn-block" %>
     <% end %>
+    
+  　  <div class="panel panel-default panel-body">
+        <div class="text-center">
+           <p>SNSのアカウントで登録</p>
+          <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
+            <span class="fa fa-twitter"></span> Twitter
+          <% end %>
+        <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+          <span class="fa fa-facebook"></span> Facebook
+        <% end %>
+      </div>
+　   </div>
+   
+    
     <br>
     <p>登録済みの方は<%= link_to "こちら", login_path %></p>
 

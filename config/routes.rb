@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :tags, only: [:show, :index]
   resources :images, only: [:show, :new, :create, :destroy]
+  
+  match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
+  
 end

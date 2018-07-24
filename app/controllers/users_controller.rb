@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+
     if @user.save
       flash[:success] = "ユーザを登録しました。"
       session[:user_id] = @user.id
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       flash.now[:danger] = "ユーザの登録に失敗しました。"
       render :new
     end
+
   end
   
   private

@@ -3,14 +3,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    email = params[:session][:email].downcase
-    password = params[:session][:password]
-    if login(email, password)
-      flash[:success] = "ログインに成功しました。"
+    auth = request.env["omniauth.auth"]
+    if auth.present?
+      unless @auth = Authorization.find_from_auth(auth)
+        @auth = Authorization.create_from_auth(auth)
+      end
+      @user = @auth.user
+      flash[:success] = "ログインしました"
+      session[:user_id] = @user.id
       redirect_to root_url
     else
-      flash.now[:danger] = "ログインに失敗しました"
-      render :new
+
+      email = params[:session][:email].downcase
+      password = params[:session][:password]
+      if login(email, password)
+        flash[:success] = "ログインに成功しました。"
+        redirect_to root_url
+      else
+        flash.now[:danger] = "ログインに失敗しました"
+        render :new
+      end
     end
   end
 

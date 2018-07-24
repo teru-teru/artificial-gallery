@@ -7,6 +7,17 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
 
-  has_many :images
+  has_many :images, dependent: :destroy, class_name: Image
+  has_many :authorizations, dependent: :destroy, class_name: Authorization
+  
+  def User.create_from_auth!(auth)
+    name = auth["info"]["name"]
+    email = auth["uid"].to_s + "@dummy.com"
+    password = auth["uid"].to_s + ENV["SNS_PASS"]
+
+    self.create(name: "#{name}", email: "#{email}" , password: "#{password}")
+    
+  end
+
 
 end

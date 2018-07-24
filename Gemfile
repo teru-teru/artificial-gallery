@@ -69,3 +69,11 @@ gem 'pry-byebug'
 gem 'fog-aws'
 #環境変数用
 gem 'dotenv-rails'
+#SNS認証
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+#SNS認証ボタン用
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'

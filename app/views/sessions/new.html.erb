@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    
+
     <%= form_for(:session, url: login_path) do |f| %>
     
       <div class="form-group">
@@ -19,6 +19,19 @@
       
       <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
     <% end %>
+    <br>
+     <div class="panel panel-default panel-body">
+      <div class="text-center">
+       <p>SNSのアカウントでログイン</p>
+          <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
+            <span class="fa fa-twitter"></span> Twitter
+          <% end %>
+        <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+          <span class="fa fa-facebook"></span> Facebook
+        <% end %>
+      </div>
+　   </div>
+    
     <br>
     <p>ユーザ登録がまだの方は<%= link_to "こちら", signup_path %></p>
     
