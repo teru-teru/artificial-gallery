@@ -39,19 +39,23 @@ class Image < ApplicationRecord
   
   #twitter投稿用に画像についたタグ最初三つを取り出して,で接続
   def hash_tags
-    unless self.tags.first.word == nil
-      @hash_tags = self.tags.first.word + ","
-
-      unless self.tags.second.word == nil
-        @hash_tags = @hash_tags + self.tags.second.word + "," 
-
-        unless self.tags.third.word == nil
-          @hash_tags = @hash_tags + self.tags.third.word + ","
-        end
-      end
+    t1 = self.tags.first
+    t2 = self.tags.second
+    t3 = self.tags.third
+    unless t1.nil?
+      @hash_tags = t1.word + ","
     else
-      @hash_tags = nil
+      @hash_tags =nil
     end
+    
+    unless t2.nil?
+      @hash_tags = @hash_tags + t2.word + "," 
+    end
+    
+    unless t3.nil?
+      @hash_tags = @hash_tags + t3.word + ","
+    end
+    return @hash_tags
   end
   
 end
