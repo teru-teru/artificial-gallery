@@ -37,5 +37,22 @@ class Image < ApplicationRecord
     same_tag.sort_by{ | k, v | v}.reverse.to_h
   end
   
+  #twitter投稿用に画像についたタグ最初三つを取り出して,で接続
+  def hash_tags
+    unless self.tags.first.word == nil
+      @hash_tags = self.tags.first.word + ","
+
+      unless self.tags.second.word == nil
+        @hash_tags = @hash_tags + self.tags.second.word + "," 
+
+        unless self.tags.third.word == nil
+          @hash_tags = @hash_tags + self.tags.third.word + ","
+        end
+      end
+    else
+      @hash_tags = nil
+    end
+  end
+  
 end
   
