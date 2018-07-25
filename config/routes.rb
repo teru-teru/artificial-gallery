@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get "confidence_ranking", to: "images#confidence"
   get "analysis_false", to: "images#analysis_false"
   get "images/:id/relevance", to: "images#relevance"
+  
+  get "privacy_policy", to: "toppages#privacy_policy"
+  get "terms", to: "toppages#terms"
 
   resources :users, only: [:show, :new, :create]
   resources :tags, only: [:show, :index]
