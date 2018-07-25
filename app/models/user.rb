@@ -12,12 +12,12 @@ class User < ApplicationRecord
   
   def User.create_from_auth!(auth)
     name = auth["info"]["name"]
-    email = auth["uid"].to_s + "@dummy.com"
+    email = auth["info"]["email"]
     password = auth["uid"].to_s + ENV["SNS_PASS"]
 
     self.create(name: "#{name}", email: "#{email}" , password: "#{password}")
     
   end
-
+  #issue : FBとTwitterで同じアドレス使ってる人は2重登録できない→emailに文字列付与すればできるが現状このままで
 
 end

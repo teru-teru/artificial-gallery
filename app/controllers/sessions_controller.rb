@@ -7,9 +7,11 @@ class SessionsController < ApplicationController
     if auth.present?
       unless @auth = Authorization.find_from_auth(auth)
         @auth = Authorization.create_from_auth(auth)
+        flash[:success] = "ユーザ登録しました"
+      else 
+        flash[:success] = "ログインしました"
       end
       @user = @auth.user
-      flash[:success] = "ログインしました"
       session[:user_id] = @user.id
       redirect_to root_url
     else
