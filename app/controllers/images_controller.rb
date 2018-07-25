@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    if params[:image].nil?
+    if params[:image][:image].nil?
       flash[:danger] = "画像を選択してください"
       redirect_to new_image_url and return
     end
