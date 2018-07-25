@@ -3,10 +3,32 @@
     <h1><span class="red">A</span>RT<span class="red">I</span>FICIAL</h1>
     <h1>GALLERY</h1>
     <br>
-    <%= link_to new_image_path do %>
-      <button type="button" class="btn btn-default btn-lg">
-        画像を投稿する
-      </button>
+    <% if logged_in? %>
+      <%= link_to new_image_path do %>
+        <button type="button" class="btn btn-default btn-lg">
+          画像を投稿する
+        </button>
+      <% end %>
+    <% else %>
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <div class="text-center">
+          <div>
+            <%= link_to signup_path do %>
+              <button type="button" class="btn btn-default btn-default index-button">
+                メールアドレスで登録
+              </button>
+            <% end %>
+          </div>
+          <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
+            <span class="fa fa-twitter"></span> Twitterで登録
+          <% end %>
+          <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+            <span class="fa fa-facebook"></span> Facebookで登録
+          <% end %>
+        </div>
+      </div>
+    </div>
     <% end %>
   </div>
 <% end %>
@@ -14,6 +36,5 @@
 <h2 class="text-center">
   最近の投稿
 </h2>
-  
 <%= render "images/images", images: @image.page(params[:page]).per(4) %>
 
