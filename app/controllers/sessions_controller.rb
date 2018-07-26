@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
       end
       @user = @auth.user
       session[:user_id] = @user.id
-      redirect_to root_url
+      #redirect_to request.env['omniauth.origin']
+      redirect_to new_image_url
     else
 
       email = params[:session][:email].downcase

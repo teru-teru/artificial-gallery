@@ -1,3 +1,7 @@
+<% unless logged_in? %>
+  <%= render "layouts/SNS_login" %>
+<% end %>
+
 <div class="text-center">
   <h2>#<%= @tag.word %></h2>
   <h2><%= @tag.images.count %>件の画像</h2>

@@ -1,3 +1,7 @@
+<% unless logged_in? %>
+  <%= render "layouts/SNS_login" %>
+<% end %>
+
 <h2 class="text-center">画像詳細ページ</h2>
 
 <div class="row">

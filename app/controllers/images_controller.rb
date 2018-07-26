@@ -6,7 +6,7 @@ Dotenv::Railtie.load
 
 class ImagesController < ApplicationController
 
-  before_action :require_user_logged_in, only: [:create, :destroy]
+  before_action :require_user_logged_in, only: [:new, :create, :destroy]
   
   def show
      @image = Image.find_by(id: params[:id])

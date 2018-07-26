@@ -1,3 +1,7 @@
+<% unless logged_in? %>
+  <%= render "layouts/SNS_login" %>
+<% end %>
+
 <div class="text-center">
   <h2>同じタグが多く付いている画像</h2>
 </div>

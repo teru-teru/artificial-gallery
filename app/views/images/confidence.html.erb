@@ -1,3 +1,7 @@
+<% unless logged_in? %>
+  <%= render "layouts/SNS_login" %>
+<% end %>
+
 <div class="text-center">
   <h2>解析自信度ランキング</h2>
 </div>
