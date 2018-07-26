@@ -5,13 +5,15 @@
       <div class="image">
         <div class="panel panel-default">
           <div class="panel-heading text-center">
-             <h3><%= i.caption.text %> <span class="badge">自信：<%= i.caption.confidence.to_s + "%" %></span></h3>
-          </div>
-          <div class="panel-body text-center">
             <%= link_to i do %> 
-              <%= image_tag i.image.url %>
+               <h3><%= i.caption.text %> <span class="badge">自信：<%= i.caption.confidence.to_s + "%" %></span></h3>
             <% end %>
           </div>
+          <%= link_to i do %> 
+            <div class="panel-body text-center">
+                <%= image_tag i.image.url %>
+            </div>
+          <% end %>
           <div class="panel-footer">
            <ul>
             <% i.tags.each do |tag| %>
