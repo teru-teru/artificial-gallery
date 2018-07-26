@@ -5,18 +5,25 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="precaution">
+      <p>＜＜アプリの使用方法＞＞</p>
+      <ol>
+        <li>解析したい画像を選びます</li>
+        <li>「投稿」ボタンを押すと、AIが解析を始めます</li>
+        <li>AIが「画像の説明」と「#タグ」を付けて画像を投稿します</li>
+        <li>SNSで解析結果をシェアしたり、#タグや右上のメニューから他の人が投稿した解析結果を見てみよう！</li>
+      </ol>
+    </div>
       <p>＜＜注意事項＞＞</p>
       <ul>
+        <li>解析には時間がかかることがあります</li>
         <li>個人情報を含む画像は投稿しないでください</li>
         <li>投稿可能な形式はJPEG, PNG, GIF, BMPです</li>
         <li>公序良俗に反する投稿は禁止です</li>
-        <li>画像によってはうまく解析できないことがあります</li>
-        <li>残念ながら、絵の解析には弱いです</li>
-        <li>日本語より英語のほうが解析精度が高いです</li>
+        <li>残念ながら、絵の解析はうまくできません</li>
+        <li>英語のほうが日本語より解析精度が高いです</li>
       </ul>
-    </div>
     <div class="col-md-6 col-md-offset-3">
-      
+      <br>
       <%= form_for(@image) do |f| %>
         <%= f.file_field :image %>
         <br>
