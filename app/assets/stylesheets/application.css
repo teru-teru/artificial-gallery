@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+body{
+  background:#e3e3e3;
+}
+  
+
 .cover{
   background-image: url('/images/background6.gif');
   background-size: cover;
@@ -25,7 +30,8 @@
   font-size:40px;
 }
 
-.precaution{
+.how-to-use{
+  background:white;
   border:solid 1px black;
   margin-top: 20px;
   margin-bottom: 20px;
