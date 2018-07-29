@@ -5,8 +5,14 @@ body{
 }
   
 
+.index-title-box{
+ background-color: rgba(0,0,0,0.3);
+ padding: 10px;
+ margin-bottom:20px;
+}
+
 .cover{
-  background-image: url('/images/background6.gif');
+  background-image: url('/images/background1.jpg');
   background-size: cover;
   background-position: center ;
   color: white;
@@ -14,8 +20,8 @@ body{
 }
 
 .cover .index-title{
-  font-family: "Bradley Hand ITC";
-  font-size: 60px;
+  font-family: "Cambria math";
+  font-size: 55px;
 }
 
 .background-grey{
