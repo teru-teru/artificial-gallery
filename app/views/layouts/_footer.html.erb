@@ -1,3 +1,6 @@
 <footer>
+  <% if logged_in? %>
+    <%= render "layouts/navbar_sharebutton" %>
+  <% end %>
   <div class="text-center text-muted">&copy; 2018 ARTIFICIAL GALLERY</div>
 </footer>

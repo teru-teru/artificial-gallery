@@ -1,4 +1,5 @@
 <% content_for :meta do %>
+  <meta property="og:title" content="ArtificialGallery" />
   <meta property="og:type" content=" website" />
   <meta property="og:url" content="https://artificial-gallery.herokuapp.com" />
   <meta property="og:image" content="https://artificial-gallery.herokuapp.com/logos/top-logo.png" />
@@ -45,4 +46,3 @@
   最近の投稿
 </h2>
 <%= render "images/images", images: @image.page(params[:page]).per(5) %>
-
