@@ -41,7 +41,14 @@
     <% end %>
   </div>
 <% end %>
-
+<% unless logged_in? %>
+  <div class="text-center">
+    <h1 class="toppage-h1">画像認識AIで遊ぼう</h1>
+    <p>最新AI技術のDeeplearningによる画像解析を誰でも気軽に試せるサービスです。</p>
+    <p>面白い解析結果が出たらSNSでシェアしてみましょう！</p>
+  </div>
+  <div class="space"></div>
+<% end %>
 <h2 class="text-center">
   最近の投稿
 </h2>
