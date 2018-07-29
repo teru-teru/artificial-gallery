@@ -1,4 +1,5 @@
 <% content_for :meta do %>
+  <meta property="og:title" content="ArtificialGallery -解析結果ページ-" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://artificial-gallery.herokuapp.com/images/<%= @image.id %>" />
   <meta property="og:image" content="<%= @image.image.url %>" />
@@ -37,12 +38,12 @@
     <div class="text-center">
       <p>↑↑#タグをクリックして同じタグが付いた写真を検索</p><br>
       <%= link_to ({:controller => "images", :action => "relevance"}) do  %>
-      <p class="btn btn-info btn-block">同じタグが多くついた画像を検索する</p>
+      <p class="btn btn-info btn-block">似ている画像を探す</p>
       <% end %>
       <div class="space"></div>
       <div class="panel panel-default panel-body">
         <p>解析結果をSNSでシェアしよう！</p>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="AIで画像分析してみたよ！みんなもしてみよう！　" data-hashtags="<%= @image.hash_tags %>ArtificialGallery,AI,DeepLearning" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="AIで画像分析してみたよ！みんなもやってみよう！　" data-hashtags="<%= @image.hash_tags %>ArtificialGallery,AI,DeepLearning" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fartificial-gallery.herokuapp.com%2Fimages%2F<%= params[:id] %>&layout=button_count&size=large&mobile_iframe=false&width=87&height=28&appId" width="87" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
       </div>
       <% if @image.user == current_user %>
