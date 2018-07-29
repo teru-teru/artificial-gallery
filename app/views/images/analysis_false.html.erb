@@ -5,7 +5,7 @@
   <h2>解析失敗画像</h2>
 </div>
 <% unless @image_false.blank? %>
-  <%= render "images/images", images: Kaminari.paginate_array(@image_false).page(params[:page]).per(4)  %>
+  <%= render "images/images", images: Kaminari.paginate_array(@image_false).page(params[:page]).per(5)  %>
   
   <% else %>
   <br>

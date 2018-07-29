@@ -18,7 +18,7 @@
 </div>
 
 
-<% @images = @tag.images.page(params[:page]).per(4) %>
+<% @images = @tag.images.page(params[:page]).per(5) %>
 <% @images.each do |i| %>
   <li><%= link_to i do %> 
   <%= image_tag i.image.url if i.image? %>

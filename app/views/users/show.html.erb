@@ -3,4 +3,4 @@
   <h3><%= @user.images.count %>件の投稿</h2>
 </div>
 
-<%= render "images/images", images: @user.images.page(params[:page]).per(4)  %>
+<%= render "images/images", images: @user.images.page(params[:page]).per(5)  %>
