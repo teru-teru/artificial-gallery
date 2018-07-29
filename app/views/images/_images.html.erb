@@ -25,7 +25,7 @@
             <% end %>
            </ul>
           <% if i.user == current_user %>
-            <div class="text-center">
+            <div class="text-center listed-delete-button">
               <%= link_to "画像を削除", i, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
             </div>
           <% end %>
