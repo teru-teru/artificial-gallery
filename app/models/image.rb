@@ -41,7 +41,7 @@ class Image < ApplicationRecord
   
   #twitter投稿用に画像についたタグ最初5つを取り出して,で接続
   def hash_tags
-    @hash_tags = " "
+    @hash_tags = ""
     unless self.tags.first.nil?
       self.tags.first(5).each do |t|
         @hash_tags = @hash_tags + t.word + ","       

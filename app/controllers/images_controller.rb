@@ -76,7 +76,6 @@ class ImagesController < ApplicationController
         @caption.confidence = 0
       end
       @caption.save
-      #テスト用
       @@json = @json
       redirect_to @image
     else
